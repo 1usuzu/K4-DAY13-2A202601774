@@ -1,5 +1,0 @@
-# Evidence: request goc chua email/SDT/CCCD gia, log da duoc redact thanh [REDACTED_...]
-# Input goc gui len API (khong ghi vao log):
-# "Lien he email test.user@example.com hoac SDT 0912345678 de duoc ho tro, CCCD 012345678912"
-{"service": "api", "payload": {"message_preview": "Lien he email [REDACTED_EMAIL] hoac SDT [REDACTED_PHONE_VN] de duoc ho tro, CCCD..."}, "event": "request_received", "session_id": "s_demo_evidence", "env": "dev", "model": "claude-sonnet-4-5", "user_id_hash": "57d97ef5eb3a", "correlation_id": "req-9794a64f", "feature": "qa", "level": "info", "ts": "2026-08-11T08:22:37.848023Z"}
-{"service": "api", "latency_ms": 1045, "tokens_in": 42, "tokens_out": 92, "cost_usd": 0.001506, "quality_score": 0.9, "payload": {"answer_preview": "Starter answer. Teams should improve this output logic and add better quality ch..."}, "event": "response_sent", "session_id": "s_demo_evidence", "env": "dev", "model": "claude-sonnet-4-5", "user_id_hash": "57d97ef5eb3a", "correlation_id": "req-9794a64f", "feature": "qa", "level": "info", "ts": "2026-08-11T08:22:38.898462Z"}
