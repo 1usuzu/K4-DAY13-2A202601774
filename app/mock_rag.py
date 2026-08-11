@@ -17,7 +17,7 @@ def retrieve(message: str) -> list[str]:
     if STATE["tool_fail"]:
         raise RuntimeError("Vector store timeout")
     if STATE["rag_slow"]:
-        pass  # Fixed: Removed time.sleep(2.5)
+        time.sleep(2.5)
     lowered = message.lower()
     for key, docs in CORPUS.items():
         if key in lowered:

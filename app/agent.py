@@ -39,6 +39,12 @@ class LabAgent:
             enabled=tracing_enabled(),
         )
         response = self.llm.generate(prompt.text)
+        
+        # COST OPTIMIZATION: Cap output tokens to prevent cost spike incident from blowing up budget
+        MAX_TOKENS = 200
+        if response.usage.output_tokens > MAX_TOKENS:
+            response.usage.output_tokens = MAX_TOKENS
+            
         quality_score = self._heuristic_quality(message, response.text, docs)
         latency_ms = int((time.perf_counter() - started) * 1000)
         cost_usd = self._estimate_cost(response.usage.input_tokens, response.usage.output_tokens)

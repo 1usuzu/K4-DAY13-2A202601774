@@ -51,6 +51,14 @@ async def startup() -> None:
     )
 
 
+@app.on_event("shutdown")
+async def shutdown() -> None:
+    from .tracing import get_langfuse_client
+    client = get_langfuse_client()
+    if hasattr(client, "flush"):
+        client.flush()
+
+
 @app.get("/health")
 async def health() -> dict:
     return {"ok": True, "tracing_enabled": tracing_enabled(), "incidents": status()}

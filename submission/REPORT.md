@@ -20,7 +20,7 @@ Nguyễn Phương Thuỳ: Thành viên E
 
 ## 2. Kết quả kỹ thuật
 
-- Điểm `validate_logs.py`: 50/100 (Sau CP1)
+- Điểm `validate_logs.py`: 100/100 (Đã hoàn thiện sau CP1)
 - Tổng số traces: 11
 - Số PII leak còn lại: 0
 - Link/đường dẫn dashboard: `scripts/dashboard.py` (Streamlit Local)
@@ -51,8 +51,8 @@ Nguyễn Phương Thuỳ: Thành viên E
 
 - Challenge ID: day13-k4-observability-v1
 - Triệu chứng từ metrics: Dashboard cảnh báo p99 Latency tăng vọt lên khoảng 10-13s cho các request thuộc tính năng `monitoring`.
-- Trace ID liên quan: Trace cho span của tính năng RAG bị kéo dài bất thường (Ví dụ: từ Correlation ID `req-9401019f`).
-- Log line/correlation ID liên quan: Correlation ID `req-9401019f`.
+- Trace ID liên quan: Trace cho span của tính năng RAG bị kéo dài bất thường (Từ Correlation ID `req-e3105b85`).
+- Log line/correlation ID liên quan: Correlation ID `req-e3105b85`.
 - Root cause: Incident `rag_slow` gây ra việc dừng (sleep) 2.5 giây giả lập trong hàm `retrieve()` của file `app/mock_rag.py`. Việc này cộng với tải concurrency 5 làm nghẽn toàn bộ hệ thống API khiến thời gian kéo lên 13 giây.
 - Fix action: Bỏ dòng `time.sleep(2.5)` trong khối kiểm tra sự cố `rag_slow` tại `app/mock_rag.py`.
 - Preventive measure: Đặt timeout (VD: 1.5s) cho mọi lời gọi RAG/VectorDB. Nếu quá hạn tự động ngắt và dùng cache hoặc trả về fallback. Thiết lập thêm alert riêng cho Span RAG thay vì chỉ alert toàn cục.
